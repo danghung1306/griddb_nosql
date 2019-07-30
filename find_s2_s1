@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <string.h>
+int pos(char* s1, char* s2);
+main()
+{
+	char* leng;
+	char s1[] = "abcdefghjk", s2[] = "cdefgh";
+	leng = pos(s1, s2);
+	if (pos(s1, s2) == 0)
+		printf("\nNot Found");
+	else
+		printf("%s", leng);
+	getch();
+}
+int pos(char* s1, char* s2)
+{
+	int* location;
+	if (strlen(s1) < strlen(s2)) 
+		return 0;
+	for (int i = 0; i < strlen(s1); ++i)
+		if (*(s1+i) == *(s2))
+		{
+			for (int j = 1; j < strlen(s2); ++j) {
+				if (*(s1+i + j) != *(s2+j))
+					break;
+			}
+			location = s1 + i;
+			return location;
+		}
+	return 0;
+
+}
